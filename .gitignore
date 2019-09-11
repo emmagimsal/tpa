@@ -1,0 +1,16 @@
+#ignore folder named 'target'
+target/
+
+#ignore all .class files
+*.class
+
+#ignone folder named '.settings'
+.settings/
+#ignore folder named '.mvn'
+.mvn/
+
+.classpath
+.factorypath
+.project
+.settings
+

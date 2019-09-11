@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<body id="contendedor_ppal_usuarios">
+
+
+
+
+	<form th:object="${usuario}" th:action="@{/usuario/add}"
+		method="get">
+		<div>
+			<div>
+				<button type="submit" id="agregar_usuario">Nuevo</button>
+			</div>
+		</div>
+
+	</form>
+
+
+
+
+	<table border="1">
+
+
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>email</th>
+				<th>Modificar</th>
+				<th>Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="object : ${listadoAlumnos}">
+				<td th:text="${object?.id}">Id</td>
+				<td th:text="${object?.email}">email</td>
+
+				<td><a th:href="@{/alumno/edit/} + ${object.id}"
+					class="btn btn-default">Editar</a></td>
+				<td><a th:href="@{/alumno/delete/} + ${object.id}"
+					class="btn btn-danger">Elimnar</a></td>
+			</tr>
+		</tbody>
+
+	</table>
+
+</body>
+</html>
