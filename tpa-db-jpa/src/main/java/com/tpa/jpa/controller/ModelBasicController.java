@@ -55,6 +55,7 @@ public class ModelBasicController {
 			return mav;
 		}
 
+		
 		userRepo.save(usuario);
 		mav.setViewName("redirect:/usuario/basic/list");
 		return mav;
