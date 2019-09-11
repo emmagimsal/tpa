@@ -46,7 +46,7 @@ public class ModelBasicController {
 	}
 
 	@RequestMapping(path = "/usuario/basic/create", method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute @Valid Usuario chofer, BindingResult bindingResult, Model model) {
+	public ModelAndView save(@ModelAttribute @Valid Usuario usuario, BindingResult bindingResult, Model model) {
 
 		ModelAndView mav = new ModelAndView();
 
@@ -55,7 +55,7 @@ public class ModelBasicController {
 			return mav;
 		}
 
-		userRepo.save(chofer);
+		userRepo.save(usuario);
 		mav.setViewName("redirect:/usuario/basic/list");
 		return mav;
 	}
