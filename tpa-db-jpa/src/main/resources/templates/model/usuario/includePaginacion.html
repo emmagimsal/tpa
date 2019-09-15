@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+		
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+  
+				<li th:if="${listadoUsuarios.totalPages >= 0}" 
+					th:class="${iStat.count-1== pagNum}? 'page-item active' : 'page-item' "
+					th:each="pageNumber, iStat  : ${pageNumbers}"
+					th:style="${iStat.count-1== pagNum}? 'font-weight: bold;' : '' ">
+					
+				<a
+						class="page-link"
+						th:href="@{/usuario/listV2(size=${listadoUsuarios.size}, page=${pageNumber})}"
+						th:text=${pageNumber} 
+						th:class="${pageNumber==listadoUsuarios.number } ? page-link : page-link">
+					<span th:if="${pageNumber==listadoUsuarios.number }"  class="sr-only">(current)</span>
+			   </a>
+				</li>
+				
+  </ul>
+</nav>
+
+</body>
+
+</html>

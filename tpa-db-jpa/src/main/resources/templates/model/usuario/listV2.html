@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="es">
+<title>Listado de Usuarios</title>
+<!-- <th:block th:include="layout/libs"></th:block> -->
+</head>
+<body id="contendedor_ppal_usuarios">
+
+<th:block th:include="layout/header"></th:block>
+	<br />
+	<br />
+	<div class="container">
+
+
+
+			
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+  
+				<li th:if="${listadoUsuarios.totalPages >= 0}" 
+					th:class="${iStat.count-1== pagNum}? 'page-item active' : 'page-item' "
+					th:each="pageNumber, iStat  : ${pageNumbers}"
+					th:style="${iStat.count-1== pagNum}? 'font-weight: bold;' : '' ">
+					
+				<a
+						class="page-link"
+						th:href="@{/usuario/listV2(size=${listadoUsuarios.size}, page=${pageNumber})}"
+						th:text=${pageNumber} 
+						th:class="${pageNumber==listadoUsuarios.number } ? page-link : page-link">
+					<span th:if="${pageNumber==listadoUsuarios.number }"  class="sr-only">(current)</span>
+			   </a>
+				</li>
+				
+  </ul>
+</nav>
+
+
+
+<br></br>
+
+		<form class="form-horizontal" th:object="${usuario}"
+			th:action="@{/usuario/add}" method="get">
+			<div class="form-group">
+				<div class="col-sm-2">
+					<button type="submit" id="agregar_usuario" class="btn btn-success">Nuevo</button>
+				</div>
+			</div>
+
+		</form>
+
+
+		<!-- Results block -->
+		<div id="resultsBlock">
+
+			<div th:fragment="usuariosListFragment"
+				th:if="${not #lists.isEmpty(listadoUsuarios)}">
+				<h2>Listado usuarios</h2>
+
+				<form class="form-horizontal" th:object="${usuario}"
+					th:action="@{/usuario/add}" method="get"></form>
+				<table class="table table-striped">
+
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>apellido</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr th:each="object : ${listadoUsuarios}">
+							<td th:text="${object?.id}">Id</td>
+							<td th:text="${object?.nombre}">nombre</td>
+						</tr>
+					</tbody>
+
+				</table>
+
+				<form class="form-horizontal" th:object="${usuario}"
+					th:action="@{/usuario/add}" method="get">
+					<div class="form-group">
+						<div class="col-sm-2">
+							<button type="submit" id="agregar_usuario"
+								class="btn btn-success">Nuevo</button>
+						</div>
+					</div>
+
+				</form>
+
+
+			</div>
+
+<!-- 					<th:block th:include="model/usuario/includePaginacion"></th:block> -->
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('#campoBusqueda').on('keypress', function(e) {
+			if (e.which == 13) {
+				
+				ejecutarBusqueda();
+			}
+		});
+	})
+
+	function ejecutarBusqueda() {
+		
+		var busqueda = $('#campoBusqueda').val();
+		
+		var url = '';
+
+		if (busqueda != '') {
+			url = url + 'buscarPorNombre/' + busqueda;
+		} else {
+			url = url + 'buscarPorNombre/' + '-';
+		}
+
+		$("#resultsBlock").load(url);
+	}
+	
+	function cleanFilter() {
+		 
+	    $("#campoBusqueda").val("");
+	}
+
+</script>
+
+</html>

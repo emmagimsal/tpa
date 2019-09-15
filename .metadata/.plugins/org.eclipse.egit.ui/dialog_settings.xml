@@ -8,6 +8,12 @@
 	<list key="RepositorySelectionPage.UsedUris">
 		<item value="https://github.com/varela24672/spring-boot-tpa.git"/>
 	</list>
+	<list key="CommitDialog.authorValues">
+		<item value="Raúl &lt;varela.raul@ymail.com&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="Raúl &lt;varela.raul@ymail.com&gt;"/>
+	</list>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
 		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
 		<item key="STAGING_SASH_FORM_WEIGHT" value="500,500"/>
