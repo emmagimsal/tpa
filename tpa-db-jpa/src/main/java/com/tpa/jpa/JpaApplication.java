@@ -21,7 +21,7 @@ public class JpaApplication {
 	CommandLineRunner init(UsuarioRepository userRepo) {
 		return args -> {
 			
-			int cantidad=130;
+			int cantidad=35;
 			
 			userRepo.deleteAll();
 			
@@ -30,7 +30,7 @@ public class JpaApplication {
 
 				    	Usuario usuario=new Usuario();
 				    	usuario.setEmail(i+"@"+i*2+".com.ar");
-				    	usuario.setNombre("nombre "+i);
+				    	usuario.setNombre("nombre"+i);
 				    	
 				    	userRepo.save(usuario);
 						return usuario;

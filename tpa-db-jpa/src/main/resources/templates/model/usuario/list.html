@@ -2,13 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="es">
 <title>Listado de Usuarios</title>
-<th:block th:include="layout/libs"></th:block>
+<!-- <th:block th:include="layout/libs"></th:block> -->
 </head>
 <body id="contendedor_ppal_usuarios">
 
+<th:block th:include="layout/header"></th:block>
 	<br />
 	<br />
 	<div class="container">
+
+
+<fieldset  class="border" >
+<legend  class="w-auto">Búsqueda por Nombre</legend>
+		
+		<div class="form-horizontal" >
+			<div class="form-group">
+				<div class="col-sm-2">
+					<input type="text" id="campoBusqueda" value=""></input>
+				</div>
+
+				<div class="col-sm-2">
+					
+					<button id="botonBuscarPorAtributo" name="botonBuscarPorAtributo"  class=" btn btn-primary"
+								onclick="ejecutarBusqueda()" type="button" th:text="buscar">Buscar</button>
+								
+					<button id="cleanFilter" name="cleanFilter" class=" btn btn-primary"
+								onclick="cleanFilter()" type="button" th:text="limpiar">limpiar</button>
+								
+				</div>
+			</div>
+
+		</div>
+</fieldset>
+
+<br></br>
 
 		<form class="form-horizontal" th:object="${usuario}"
 			th:action="@{/usuario/add}" method="get">
@@ -23,12 +50,7 @@
 
 		<!-- Results block -->
 		<div id="resultsBlock">
-
-
-
-
-			<div th:fragment="clientsList"
-				th:if="${not #lists.isEmpty(listadoUsuarios)}">
+			<div th:fragment="usuariosListFragment" th:if="${not #lists.isEmpty(listadoUsuarios)}">
 				<h2>Listado usuarios</h2>
 
 				<form class="form-horizontal" th:object="${usuario}"
@@ -38,24 +60,19 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>apellido</th>
+							<th>Apellido</th>
 							<th>Modificar</th>
 							<th>Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
-
 						<tr th:each="object : ${listadoUsuarios}">
 							<td th:text="${object?.id}">Id</td>
 							<td th:text="${object?.nombre}">nombre</td>
-
-							<td><a th:href="@{/usuario/edit/} + ${object.id}"
-								class="btn btn-default">Editar</a></td>
-							<td><a th:href="@{/usuario/delete/} + ${object.id}"
-								class="btn btn-danger">Elimnar</a></td>
+							<td><a th:href="@{/usuario/edit/} + ${object.id}" class="btn btn-default">Editar</a></td>
+							<td><a th:href="@{/usuario/delete/} + ${object.id}" class="btn btn-danger">Elimnar</a></td>
 						</tr>
 					</tbody>
-
 				</table>
 
 				<form class="form-horizontal" th:object="${usuario}"
@@ -68,18 +85,37 @@
 					</div>
 
 				</form>
-
-
 			</div>
-
-
 		</div>
 	</div>
 </body>
 
 <script type="text/javascript">
-$(document).ready(
-		})
+	$(document).ready(function() {
+		$('#campoBusqueda').on('keypress', function(e) {
+			if (e.which == 13) {
+				ejecutarBusqueda();
+			}
+		});
+	})
+
+	function ejecutarBusqueda() {
+		var busqueda = $('#campoBusqueda').val();
+		
+		busqueda=busqueda.trim();
+		var url = '';
+		if (busqueda != '') {
+			url = url + 'buscarPorNombre/' + busqueda;
+			url=encodeURI(url);
+		} else {
+			url = url + 'buscarPorNombre/' + '-';
+		}
+		$("#resultsBlock").load(url);
+	}
+	
+	function cleanFilter() {
+	    $("#campoBusqueda").val("");
+	}
 </script>
 
 </html>
