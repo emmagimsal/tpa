@@ -21,15 +21,16 @@ public class PersonaProfeApplication {
 	CommandLineRunner init(PersonaRepository personaRepo) {
 		return args -> {
 
-			int cantidad = 35;
+			int cantidad = 135;
 
 			personaRepo.deleteAll();
 			LongStream.range(1, cantidad).mapToObj(i -> {
 			
 				Persona persona = new Persona();
-				persona.setApellido("Apell" + i);
+				persona.setApellido("Apell");
 				persona.setNombre("nom" + i);
 				persona.setDni( Integer.valueOf( Long.valueOf(i).toString()));
+				
 				personaRepo.save(persona);
 				return persona;
 			}).map(v -> personaRepo.save(v)).forEach(System.out::println);

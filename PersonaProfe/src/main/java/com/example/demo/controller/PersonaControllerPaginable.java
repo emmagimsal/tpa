@@ -69,4 +69,17 @@ public class PersonaControllerPaginable {
 		}
 
 	}
+	
+	
+	@GetMapping("/nombre/{nombre}")
+	@Transactional
+	public ResponseEntity getFindByNombre(Pageable pageable, @PathVariable String nombre) {
+
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(personaRepo.findByNombre(pageable, nombre));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"message\": \"Error. \"}");
+		}
+
+	}
 }
