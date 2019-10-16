@@ -11,8 +11,9 @@
 </head>
 <body>
 
-
 <input class="form-control" name="currentpage" 	placeholder="" type="hidden" id="currentpage" />
+
+<input class="form-control" name="method" 	placeholder="" type="hidden" id="method" />
 
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
@@ -102,6 +103,37 @@
 				<button class="btn btn-primary btn-lg" id="agregarPersona">
 					Agregar</button>
 
+                                
+                                
+                                 
+                                <div id="pageSizeDiv" style="display: none">
+                                <br/>
+                               <select  id="currentSize" > 
+                                    <option value="5">5</option> 
+                                    <option value="10">10</option> 
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option> 
+                                </select> 
+                                
+<!--                                  <div class="btn-group currentSize">
+                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Seleccionar cant de registros
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                      <li class="dropdown-item"><a href="#">5</a></li>
+                                      <li class="dropdown-item"><a href="#">10</a></li>
+                                      <li class="dropdown-item"><a href="#">20</a></li>
+                                      <li class="dropdown-item"><a href="#">25</a></li>
+                                      <li class="dropdown-item"><a href="#">30</a></li>
+                                      <li class="dropdown-item"><a href="#">50</a></li>
+                                    </ul>
+                                  </div>-->
+
+                                    
+                                </div>
+                              
 
 				<nav aria-label="...">
 					<ul class="pagination justify-content-center piepaginacion"
