@@ -10,7 +10,15 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         </head>
     <body>
+
+<input class="form-control" name="currentpage" 	placeholder="" type="hidden" id="currentpage" />
+
+<input class="form-control" name="method" 	placeholder="" type="hidden" id="method" />
+
         <nav class="navbar navbar-default" role="navigation">
+            
+            	
+            
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -37,6 +45,52 @@
 
 
         <div class="container">
+            
+            
+            <fieldset>
+		<legend> Filtro por DNI</legend>
+		<table cellspacing="5" cellpadding="5" border="0" align="center"
+			style="width: 100%">
+			<tbody>
+				<tr>
+					<td>N° de Documento</td>
+					<td><input class="form-control" name="nroDni"
+						placeholder="45000123" type="text" id="nroDni" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button type="button" id="buscarxDni" class="btn btn-primary" >Buscar</button>
+					</td>
+				</tr>
+				<tr>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+
+	<fieldset>
+		<legend> Filtro por Apellido</legend>
+		<table cellspacing="5" cellpadding="5" border="0" align="center"
+			style="width: 100%">
+			<tbody>
+				<tr>
+					<td>Apellido</td>
+					<td><input class="form-control" name="apellido"
+						placeholder="torres" type="text" id="apellido" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button type="button" id="buscarxApellido" class="btn btn-primary" >Buscar</button>
+					</td>
+				</tr>
+				<tr>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
+            
 
             <div class="row">
                 <div class="col-lg-2">
@@ -56,6 +110,42 @@
                         Agregar
                     </button>
 
+                    
+                      <div id="pageSizeDiv" style="display: none">
+                                <br/>
+                                <select  id="currentSize"  style="display: none"> 
+                                    <option value="5">5</option> 
+                                    <option value="10">10</option> 
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option> 
+                                </select> 
+                                
+                                  <div class="btn-group currentSize">
+                                    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Seleccionar cant de registros
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                      <li class="dropdown-item"><a href="#">5</a></li>
+                                      <li class="dropdown-item"><a href="#">10</a></li>
+                                      <li class="dropdown-item"><a href="#">20</a></li>
+                                      <li class="dropdown-item"><a href="#">25</a></li>
+                                      <li class="dropdown-item"><a href="#">30</a></li>
+                                      <li class="dropdown-item"><a href="#">50</a></li>
+                                    </ul>
+                                  </div>
+
+                                    
+                                </div>
+                              
+
+				<nav aria-label="...">
+					<ul class="pagination justify-content-center piepaginacion"
+						id="piepaginacion2">
+
+					</ul>
+				</nav>
 
                     <table class="table">
                         <thead>
@@ -71,6 +161,15 @@
                         </tbody>
                         
                     </table>
+                    
+                    				<nav aria-label="...">
+					<ul class="pagination justify-content-center piepaginacion"
+						id="piepaginacion2">
+
+					</ul>
+				</nav>
+
+                    
                 </div>
 
                 <div class="col-lg-2">
