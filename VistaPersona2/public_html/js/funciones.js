@@ -8,7 +8,7 @@ $(function () {
 
         app.init = function () {
 
-            app.buscarPersonas();
+//            app.buscarPersonas();
             app.oyentes();
 
             /*La carga de datos inicial, puede ser mediante cualquiera de los métodos definidos,
@@ -142,7 +142,7 @@ $(function () {
                 dataType: 'json',
                 success: function (datosRecibidos) {
                     datoConvertido = JSON.stringify(datosRecibidos);
-                    alert(datoConvertido);
+//                    alert(datoConvertido);
                     app.rellenarTabla(datoConvertido);
                 },
                 error: function () {
@@ -153,7 +153,7 @@ $(function () {
         };
 
         app.rellenarTabla = function (datoConvertido) {
-            alert(datoConvertido);
+//            alert(datoConvertido);
             datoParseado = JSON.parse(datoConvertido);
             var linea = "";
 
@@ -174,7 +174,7 @@ $(function () {
 
         //Se elimina un registro de la base de datos
         app.eliminarPersona = function (id) {
-            alert(id);
+//            alert(id);
             //Se confirma que se desee eliminar ese registro
             if (confirm("¿Esta seguro que desea eliminar ese registro?"))
             {
@@ -241,7 +241,7 @@ $(function () {
 
 
         app.modificarRegistro = function () {    //funcion para modificar Perro
-            alert("entre en modificar");
+//            alert("entre en modificar");
             var id = $("#id").val();
             var url = 'http://localhost:9001/api/v1/persona/' + id;
 
@@ -277,7 +277,7 @@ $(function () {
             var url = "../../controlador/ruteador/Ruteador.php?accion=eliminar&Formulario=Perro";
             //alert(id);
             var datosEnviar = {id: id};
-            alert("Estoy en eliminar Registro");
+//            alert("Estoy en eliminar Registro");
             $.ajax({
                 url: url,
                 method: "POST",
@@ -295,7 +295,7 @@ $(function () {
 
 
         app.actualizarTabla = function (persona, id) {   //funcion para agrgar un perro nuevo o modificar uno existente en la tabla perro
-            alert("entre a actualizar");
+//            alert("entre a actualizar");
             if (id == 0) { //ES guardar una persona nueva
                 // armo la fila dinamica
                 alert("Este es un persona nuevo");
@@ -416,7 +416,7 @@ $(function () {
                 current_page = 0;
                 $("#currentpage").val(current_page);
                 
-                alert("");
+//                alert("");
             }
 
             /*Dibujamos el pie de la paginacíon*/
