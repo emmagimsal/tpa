@@ -119,28 +119,17 @@ $(function () {
             datoParseado = JSON.parse(datoConvertido);
             var linea = "";
 
-            $.each(
-                    datoParseado,
-                    function (clave, persona) {
-                        linea += '<tr>'
-                                + '<td>'
-                                + persona.nombre
-                                + '</td>'
-                                + '<td>'
-                                + persona.apellido
-                                + '</td>'
-                                + '<td>'
-                                + persona.dni
-                                + '</td>'
-                                + '<td>'
-                                + '<a class="pull-left editar" data-id_persona="'
-                                + persona.id
-                                + '"><span class="glyphicon glyphicon-pencil"></span>Editar</a>'
-                                + '<a class="pull-right eliminar" data-id_persona="'
-                                + persona.id
-                                + '"><span class="glyphicon glyphicon-remove"></span>Eliminar</a>'
-                                + '</td>' + '</tr>';
-                    });
+            $.each(datoParseado, function (clave, persona) {
+                linea += '<tr>' +
+                        '<td>' + persona.nombre + '</td>' +
+                        '<td>' + persona.apellido + '</td>' +
+                        '<td>' + persona.dni + '</td>' +
+                        '<td>' +
+                        '<a class="pull-left editar" data-id_persona="' + persona.id + '"><span class="glyphicon glyphicon-pencil"></span>Editar</a>' +
+                        '<a class="pull-right eliminar" data-id_persona="' + persona.id + '"><span class="glyphicon glyphicon-remove"></span>Eliminar</a>' +
+                        '</td>' +
+                        '</tr>';
+            });
 
             $("#cuerpoTabla").html(linea);
         };
