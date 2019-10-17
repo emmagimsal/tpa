@@ -44,14 +44,8 @@ $(function () {
                     app.guardarRegistro();
                 } else {//Si el id es distinto de cero entonces se modifica una persona
                     app.modificarRegistro();
-                }
-                
+                }                
 
-                if (texto !== "") {
-                    app.buscarPersonaPorDni(texto);
-                } else {
-                    app.buscarPersonas();
-                }
             });
 
             // OYENTE en el caso de hacer click en editar
