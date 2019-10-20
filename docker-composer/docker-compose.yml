@@ -1,7 +1,8 @@
 version: '3'
+
 services:
   nginx:
-   container_name: some-nginx
+   container_name: proxy-nginx
    image: nginx:1.13
    restart: always
    ports:
@@ -10,14 +11,14 @@ services:
    volumes:
    - ./nginx/conf.d:/etc/nginx/conf.d
    depends_on:
-   - app
+   - keyCoackApp
 
-  app:
+  keyCoackApp:
     restart: always
-    build: ./keyCloack
+    build: ../keyCloack
     working_dir: /keyCloack
     volumes:
-      - ./keyCloack:/keyCloack
+      - ../keyCloack:/keyCloack
     expose:
       - "8081"
     command: mvn clean spring-boot:run
