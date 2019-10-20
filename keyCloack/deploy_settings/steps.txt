@@ -1,0 +1,64 @@
+
+cd /home/rvarela/tools/raul/workspace_utn/keyCloack
+
+mvn package dockerfile:build 
+
+docker rm --force /keycloack-docker
+
+docker rmi keycloack:0.0.1-SNAPSHOT
+
+ 
+docker run -dit --restart unless-stopped --name keycloack-docker -p 8081:8081 stg/keycloack:0.0.1-SNAPSHOT 
+
+
+docker save -o /home/desa/eclipse-workspace/solicitud/target/solicitud_export.tar solicitud:0.0.1-SNAPSHOT
+
+scp /home/desa/eclipse-workspace/solicitud/target/solicitud_export.tar root@drpdocker:/tmp/solicitud-docker.tar
+
+me conecto .223 con ssh
+--------------------------
+
+docker load -i /tmp/solicitud-docker.tar
+ 
+docker run -i --name solicitud-docker -p 6174:6174  -t solicitud:0.0.1-SNAPSHOT /bin/bash
+ 
+ 
+ docker php
+ 
+ docker run -i   -p 80:80 - --name docker-php   -v /tmp/php-ricardo:/var/www/html  -t docker.io/adrianharabula/php7-with-oci8 /bin/bash
+ 
+
+
+ver containers
+
+docker container ls -a
+
+docker stop
+
+
+mysql -u remis -p solicitudes_viaje < "C:\Users\rana\Downloads\bkp_2019-27-06_1700\bkp_2019-27-06_1700.sql"
+
+
+https://docs.docker.com/engine/reference/commandline/container_rm/
+
+
+restore from backup
+mysql -u root -p solicitudes_viaje < C:\Users\rvarela\Desktop\bkp_2019-17-07_1300.sql
+
+
+
+SELECT 
+*,from_unixtime(SUBSTRING(revision_timestamp,1,10) ,'%Y-%m-%d %HH:%mm:%ss') as DateDemo 
+--*
+FROM aud_solicitud  s
+inner join revinfo i on s.rev=i.rev
+where s.id=3454 order by s.rev asc
+
+
+
+docker network create mynetwork;
+# Connect backend
+docker network connect mynetwork backend;# Connect frontend
+docker network connect mynetwork frontend;
+
+docker network inspect mynetwork;# Expected output should have the container names listed under "Containers"
