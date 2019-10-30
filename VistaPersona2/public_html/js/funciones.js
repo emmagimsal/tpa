@@ -409,8 +409,6 @@ $(function () {
             if (current_page > totalpaginas) {
                 current_page = 0;
                 $("#currentpage").val(current_page);
-                
-//                alert("");
             }
 
             /*Dibujamos el pie de la paginacíon*/
