@@ -1,0 +1,18 @@
+docker run -d --net=tpa_net_2019 -p 3307:3306 --name mysql-db-ml \
+-v my-db-ml:/var/lib/mysql-ml \
+-e MYSQL_DATABASE=ml_db \
+-e MYSQL_USER=ml_example \
+-e MYSQL_PASSWORD=ml_2019 \
+-e MYSQL_ROOT_PASSWORD=rootPwd \
+mysql
+
+
+docker exec -it mysql-db-ml  mysql -u root -p
+
+select host, user from mysql.user;
+
+show grants for 'ml_example';
+
+GRANT ALL PRIVILEGES ON `ml_db`.* TO 'ml_example'@'%' WITH GRANT OPTION;
+
+flush PRIVILEGES;
