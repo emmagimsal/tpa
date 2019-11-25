@@ -55,65 +55,64 @@ public class TestApiRest {
 	DnaRepository dnaRepo;
 
 	
-//	@DisplayName("Test Api Mutant DNA ")
-//	@Test
-//	public void TestIsMutant3(TestInfo testInfo) throws Exception {
-//
-//
-//		String[] dnaC = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
-//		
-//		
-//		
-//		MvcResult result = mvc.perform(post("/mutant/")
-//				.param("dna", asJsonString(dnaC))
-//				.contentType(MediaType.APPLICATION_JSON))
-//				.andExpect(status().isOk())
-//				.andExpect(content()
-//						.contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
-//				.andExpect(content()
-//						.string("OK"))
-//				.andDo(MockMvcResultHandlers.print())
-//				.andExpect(status()
-//						.isOk())
-//				.andReturn();
-//
-//		String content = result.getResponse().getContentAsString();
-//
-//		System.out.println(" Param send "+asJsonString(dnaC)+ "  Api Return ===> " + content);
-//
-//	}
+	@DisplayName("Test Api Mutant DNA ")
+	@Test
+	public void TestIsMutant3(TestInfo testInfo) throws Exception {
+
+
+		String[] dnaC = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
+		
+		
+		
+		MvcResult result = mvc.perform(post("/mutant/")
+				.param("dna", asJsonString(dnaC))
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content()
+						.contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
+				.andExpect(content()
+						.string("OK"))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(status()
+						.isOk())
+				.andReturn();
+
+		String content = result.getResponse().getContentAsString();
+
+		System.out.println(" Param send "+asJsonString(dnaC)+ "  Api Return ===> " + content);
+
+	}
 	
-//	@DisplayName("Test Api NO Mutant DNA ")
-//	@Test
-//	public void TestIsNotMutant(TestInfo testInfo) throws Exception {
-//
-//
-//		String[] dnaC = { "ATGCGA", "CAGTGC", "TAATGT", "AGACAG", "GCGTCA", "TCACTG" };
-//		
-//		MvcResult result = mvc.perform(post("/mutant/")
-//				.param("dna", asJsonString(dnaC))
-//				.contentType(MediaType.APPLICATION_JSON))
-//				.andExpect(status().isForbidden())
-//				.andExpect(content()
-//						.contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
-//				.andExpect(content()
-//						.string(""))
-//				.andDo(MockMvcResultHandlers.print())
-//				.andExpect(status()
-//						.isForbidden())
-//				.andReturn();
-//
-//		String content = result.getResponse().getContentAsString();
-//
-//		System.out.println(" Param send "+asJsonString(dnaC)+ "  Api Return ===> " + content);
-//	}
+	@DisplayName("Test Api NO Mutant DNA ")
+	@Test
+	public void TestIsNotMutant(TestInfo testInfo) throws Exception {
+
+
+		String[] dnaC = { "ATGCGA", "CAGTGC", "TAATGT", "AGACAG", "GCGTCA", "TCACTG" };
+		
+		MvcResult result = mvc.perform(post("/mutant/")
+				.param("dna", asJsonString(dnaC))
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isForbidden())
+				.andExpect(content()
+						.contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
+				.andExpect(content()
+						.string(""))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(status()
+						.isForbidden())
+				.andReturn();
+
+		String content = result.getResponse().getContentAsString();
+
+		System.out.println(" Param send "+asJsonString(dnaC)+ "  Api Return ===> " + content);
+	}
 	
 	
 	@DisplayName("Test Stats ")
 	@Test
 	public void testStats(TestInfo testInfo) throws Exception {
 
-//		{“count_mutant_dna”:40, “count_human_dna”:100: “ratio”:0.4}
 		
 		MvcResult result = mvc.perform(get("/stats")
 				.contentType(MediaType.APPLICATION_JSON))
