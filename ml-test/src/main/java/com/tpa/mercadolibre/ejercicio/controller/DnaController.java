@@ -31,6 +31,8 @@ public class DnaController {
 
 	@Autowired
 	DnaRepository dnaRepo;
+	
+	private boolean debug=false;
 
 	@PostMapping(consumes = "application/json",value = "/")
 	@Transactional
@@ -98,7 +100,7 @@ public class DnaController {
 	
 
 		try {
-			if (MutantAdnScanner.isMutant(dna, true)) {
+			if (MutantAdnScanner.isMutant(dna, debug)) {
 				dnaEntity.setMutant(1);
 				rta= true;
 			} else {

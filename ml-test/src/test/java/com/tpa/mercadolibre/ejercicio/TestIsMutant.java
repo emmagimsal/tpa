@@ -53,7 +53,7 @@ public class TestIsMutant {
 	}
 
 	@DisplayName("TestGetRows")
-//	@Test
+	@Test
 	public void TestGetRows(TestInfo testInfo) {
 		String[] dna = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
 		char[][] matrix = MutantAdnScanner.convert(dna);
@@ -67,7 +67,7 @@ public class TestIsMutant {
 	}
 
 	@DisplayName("testGetColumns")
-//	@Test
+	@Test
 	public void testGetColumns(TestInfo testInfo) {
 		String[] dna = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
 		char[][] matrix = MutantAdnScanner.convert(dna);
@@ -81,7 +81,7 @@ public class TestIsMutant {
 	}
 
 	@DisplayName("testGetDiagonal")
-//	@Test
+	@Test
 	public void testGetDiagonal(TestInfo testInfo) {
 		String[] dna = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
 		char[][] matrix = MutantAdnScanner.convert(dna);
@@ -95,7 +95,7 @@ public class TestIsMutant {
 	}
 
 	@DisplayName("testGetDiagonal2")
-//	@Test
+	@Test
 	public void testGetDiagonal2(TestInfo testInfo) {
 		String[] dna = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
 		char[][] matrix = MutantAdnScanner.convert(dna);
