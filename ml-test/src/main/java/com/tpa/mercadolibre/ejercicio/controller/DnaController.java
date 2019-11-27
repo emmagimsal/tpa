@@ -88,7 +88,7 @@ public class DnaController {
 //		}
 //	}
 
-	public boolean doJob(String[] dna) {
+	public boolean doJob(String[] dna) throws Exception {
 		
 		boolean rta=false;
 		Dna dnaEntity = new Dna();
