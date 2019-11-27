@@ -1,5 +1,7 @@
 package com.tpa.mercadolibre.ejercicio;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,6 +14,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.tpa.mercadolibre.ejercicio.adn.MutantAdnScanner;
+import com.tpa.mercadolibre.ejercicio.exception.ArrayNullException;
+import com.tpa.mercadolibre.ejercicio.exception.MatrixNullException;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
@@ -44,7 +48,7 @@ public class TestIsMutant {
 
 	@DisplayName("TestIsMutant")
 	@Test
-	public void TestIsMutant(TestInfo testInfo) {
+	public void TestIsMutant(TestInfo testInfo) throws ArrayNullException {
 		String[] dna = { "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG" };
 		boolean debug = false;
 
@@ -106,6 +110,22 @@ public class TestIsMutant {
 			System.out.println(string);
 		}
 
+	}
+
+	@DisplayName("testValidation - ArrayNullException")
+	@Test
+	public void testValidation(TestInfo testInfo) throws ArrayNullException {
+		String[] dna = null;
+		
+		assertThrows(MatrixNullException.class, () -> MutantAdnScanner.isMutant(dna, true));
+	}
+
+	@DisplayName("testValidation2 - ArrayNullException")
+	@Test
+	public void testValidation2(TestInfo testInfo) throws ArrayNullException {
+		String[] dna = null;
+		
+		assertThrows(ArrayNullException.class, () -> MutantAdnScanner.isMutant(dna, true));
 	}
 
 }

@@ -14,7 +14,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ml-test</name>
 	<description>Ejercicio Mercado Libre 2019</description>
-
+<packaging>war</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -67,44 +67,37 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
 		<!-- <dependency> -->
 		<!-- <groupId>org.springframework.boot</groupId> -->
-		<!-- <artifactId>spring-boot-starter-test</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <exclusions> -->
-		<!-- <exclusion> -->
-		<!-- <groupId>junit</groupId> -->
-		<!-- <artifactId>junit</artifactId> -->
-		<!-- </exclusion> -->
-		<!-- </exclusions> -->
+		<!-- <artifactId>spring-boot-starter-web</artifactId> -->
 		<!-- </dependency> -->
 
-		<!-- junit 5 -->
+		<dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.junit.jupiter</groupId> -->
-		<!-- <artifactId>junit-jupiter-api</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <version>${junit-jupiter.version}</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.junit.jupiter</groupId> -->
-		<!-- <artifactId>junit-jupiter-engine</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- <version>${junit-jupiter.version}</version> -->
-		<!-- </dependency> -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.assertj</groupId> -->
-		<!-- <artifactId>assertj-core</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
+		<!-- Exclude any jul-to-slf4j -->
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 
 
 	</dependencies>
@@ -112,7 +105,12 @@
 	<build>
 		<plugins>
 
-
+			<!-- add appengine-maven-plugin -->
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>1.3.1</version>
+			</plugin>
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

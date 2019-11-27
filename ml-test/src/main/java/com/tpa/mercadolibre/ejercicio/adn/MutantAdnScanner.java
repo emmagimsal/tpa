@@ -3,6 +3,9 @@ package com.tpa.mercadolibre.ejercicio.adn;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tpa.mercadolibre.ejercicio.exception.ArrayNullException;
+import com.tpa.mercadolibre.ejercicio.exception.MatrixNullException;
+
 public class MutantAdnScanner {
 
 	static String[] ALLOWED_CHARACTERS = new String[] { "A", "T", "G", "C" };
@@ -11,8 +14,10 @@ public class MutantAdnScanner {
 
 	static int LENGTH = 4;
 
-	public static boolean isMutant(String[] dna,boolean debug) {
+	public static boolean isMutant(String[] dna,boolean debug) throws ArrayNullException {
 		boolean rta = false;
+		
+		validateArray(dna);
 
 		List<String> words = getAllStrings(dna,debug);
 
@@ -39,6 +44,8 @@ public class MutantAdnScanner {
 		List<String> words = new ArrayList<>();
 
 		char[][] m = convert(dna);
+		
+		
 
 		words.addAll(scan(m,true));
 
@@ -187,6 +194,21 @@ public class MutantAdnScanner {
 		}
 
 		return false;
+	}
+	
+	
+	public boolean validateMatrix(char mat[][] ) throws MatrixNullException {
+		
+		if (mat==null) throw new MatrixNullException("Null Matrix ");
+		
+		return true;
+	}
+	
+	public static boolean validateArray(String mat[] ) throws ArrayNullException {
+		
+		if (mat==null) throw new ArrayNullException("Null Matrix ");
+		
+		return true;
 	}
 
 }
